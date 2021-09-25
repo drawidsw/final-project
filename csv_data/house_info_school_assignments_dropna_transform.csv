@@ -1,4 +1,4 @@
-price,dateSold,bathrooms,bedrooms,livingArea,homeType,lotAreaValue,zipcode,elem,middle,high,Year built
+price,dateSold,bathrooms,bedrooms,livingArea,homeType,lotAreaValue,zipcode,elem,middle,high,AgeYears
 800000,Q3_2021,4.0,5.0,3650.0,SINGLE_FAMILY,222155.99999999997,20854,wayside elementary,herbert hoover middle,winston churchill high,42.0
 800000,Q2_2021,1.0,2.0,1400.0,SINGLE_FAMILY,10890.0,20814,kensington parkwood elementary,tilden middle,walter johnson high,106.0
 800000,Q3_2020,3.0,4.0,1826.0,SINGLE_FAMILY,9148.0,20817,bethesda elementary,tilden middle,walt whitman high,65.0
