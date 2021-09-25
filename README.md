@@ -19,7 +19,7 @@ The following method was applied to scrape useful attributes from the Zillow dat
 * By successively setting appropriate filters (so as not to let Zillow exceed the total dataset size over 500 and cause pagination), data was retrieved on the Zillow portal.
 * From the developers tool, the API response was downloaded - it is downloaded in the *HAR* format.
 * The following free tool is used to scrape the HTML response and dump the output in JSON: https://stevesie.com/apps/zillow-api. This tool scrapes data in HAR files of the server response and populates them in a json file.
-* Jupyter notebook code was written to read attributes from the json files and populate a dataframe. Eventually, the dataframe was exported to a csv file. This code is available [here](code/parse_housing_data.ipynb).
+* Jupyter notebook code was written to read attributes from the json files and populate a dataframe. Eventually, the dataframe was exported to a csv file. This code is available [here](code-etl/parse_housing_data.ipynb).
 
 ### School Ratings Data
 
@@ -35,13 +35,13 @@ The 2020 demographics data for all Maryland zip codes is avaulable from the Mary
 
 ### School Assignment
 
-For each school, elementary, middle and high school assignment is determined using gmap places API. The code to do this is [here](code/assign_nearest_schools.ipynb). **Warning: Over 30K gmap API calls can result with this code, and it should be used only during the free trial period**. The logic basically finds geographically nearest schools to a given location and treats these schools as assigned schools (this may not always be accurate as district boundaries can be different, but for the most part, it is accurate).
+For each school, elementary, middle and high school assignment is determined using gmap places API. The code to do this is [here](code-etl/assign_nearest_schools.ipynb). **Warning: Over 30K gmap API calls can result with this code, and it should be used only during the free trial period**. The logic basically finds geographically nearest schools to a given location and treats these schools as assigned schools (this may not always be accurate as district boundaries can be different, but for the most part, it is accurate).
 
 After assigned schools are found, they are added to new columns of the original dataframe, and all rows with even a single unassigned school are dropped. When adding assigned schools, we make sure the said school exists in the Montgomery County school ratings data found earlier.
 
 ### Data Transformation and Cleaning
 
-In this phase, the unneeded columns are dropped, all null rows are dropped and the *lotAreaValue* attribute is normalized by converting all values in acre units to those in sq. feet. Also, all house types other than a condo, single family and townhouse are dropped, since there are too few of them. Finally, the transformed and cleaned data is exported to a csv file. The code is [here](code/transform_data.ipynb). The following columns are retained as they are the most important predictors of the sale price:
+In this phase, the unneeded columns are dropped, all null rows are dropped and the *lotAreaValue* attribute is normalized by converting all values in acre units to those in sq. feet. Also, all house types other than a condo, single family and townhouse are dropped, since there are too few of them. Finally, the transformed and cleaned data is exported to a csv file. The code is [here](code-etl/transform_data.ipynb). The following columns are retained as they are the most important predictors of the sale price:
 
 * Price - this is the target itself
 * Number of bathrooms
@@ -56,22 +56,22 @@ In this phase, the unneeded columns are dropped, all null rows are dropped and t
 
 ### Enrichment Metadata Cleaning
 
-In this phase, school names are normalized to be able to match them against the housing data. Also, unneeded columns from both the school and demographics data are dropped. The code is [here](code/clean_enrichment_data.ipynb).
+In this phase, school names are normalized to be able to match them against the housing data. Also, unneeded columns from both the school and demographics data are dropped. The code is [here](code-etl/clean_enrichment_data.ipynb).
 
 ## Data Loading
 
 Data is loaded in an RDBMS spinned using the AWS RDS service. The *entity relationship diagram* (ERD) for the three entities is shown below.
 
-![](images/erd_diagram.png)
+![](images-etl/erd_diagram.png)
 
-The *data definition language* (DDL) generated for the above ERD is [here](code/ddl.sql). Tables are created using this DDL and data is imported to those tables from the respective csv files. The pictures below show the imported data and the appropriate number of rows for each table.
+The *data definition language* (DDL) generated for the above ERD is [here](code-etl/ddl.sql). Tables are created using this DDL and data is imported to those tables from the respective csv files. The pictures below show the imported data and the appropriate number of rows for each table.
 
 | Houses Table | Schools Table | Demographics Table |
 | ------------ | ------------- | ------------------ |
-| ![](images/db_houses.png) | ![](images/db_schools.png) | ![](images/db_demographics.png) |
+| ![](images-etl/db_houses.png) | ![](images-etl/db_schools.png) | ![](images-etl/db_demographics.png) |
 
 ## Complete Data Pipeline
 
 The picture below shows the complete data pipeline including data sources, the Jupyter code files names to transform data, and all intermediate and eventual csv files generated for loading data to database tables.
 
-![](images/data_pipeline.png)
+![](images-etl/data_pipeline.png)
