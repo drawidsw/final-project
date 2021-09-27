@@ -12,7 +12,7 @@ As seen from the map above, high priced homes are in the South bordering DC.
 
 Sale prices and counts are aggregated based on zip codes and plotted in Tableau. 
 
-## Sale Price by Zip
+## Sale Price by Zip Code
 
 https://public.tableau.com/app/profile/swapna.drawid/viz/Final_Project-Price_By_Zip/price_by_zip_code
 
@@ -30,7 +30,7 @@ All of these zip codes comprise Bethesda and North Potomac area with the highest
 
 Consequently, the zip code 20886 (Montgomery Village) had the lowest average sale price at $371K. As we have discussed in the ML model results [here](README_ML.md), school ratings play a large part in determining these prices.
 
-## Number of Sales by Zip
+## Number of Sales by Zip Code
 
 https://public.tableau.com/app/profile/swapna.drawid/viz/Final_Project-Sales_By_Zip/sales_by_zip_code
 
