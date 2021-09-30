@@ -8,6 +8,12 @@ https://public.tableau.com/app/profile/swapna.drawid/viz/Final_Project-Home_Pric
 
 As seen from the map above, high priced homes are in the South bordering DC.
 
+## Visualising House Prices Correlation with High School Ratings
+
+https://public.tableau.com/app/profile/swapna.drawid/viz/Final_Project-school_assignment_prices/school_assignment_prices
+
+The above map shows color-coded home prices along with pinned locations for high schools and their ratings. This visually gives a quick confirmation that house sale prices are high when school ratings are high and vice versa.
+
 # Where are The Homes Sold
 
 Sale prices and counts are aggregated based on zip codes and plotted in Tableau. 
