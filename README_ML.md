@@ -2,6 +2,12 @@
 
 Check [this](README.md) for the introduction of the project. 
 
+The machine learning models code is indicated below.
+
+* [Base model](code-ml-models/ml_wo_enrichment.ipynb) (considers only base attributes (area, construction year, number of bedrooms, bathrooms, type, date sold etc) and none of the enrichment data)
+* [School ratings enrichment model](code-ml-models/ml_school_rating.ipynb) (considers all schools assignments and their ratings in addition to base attributes)
+* [All enrichment model](code-ml-models/ml_all_enrichment.ipynb) (considers all enrichment data - school ratings and demographics aggregated on zip codes)
+
 # Machine Learning Model Results
 
 To predict the price of a house based on factors, we ran two different *supervised ML models* in three different stages. In the first stage, a *base* model consisting of only the attributes of the house was used. In the second stage, school ratings enrichment data was added. Finally, demographics (per zip code) enrichment datw was added. 80% of the data was used for training and 20% was used for testing in each case. The table below shows the *meansquare error* (MSE), and the R<sup>2</sup> coefficient showing the model's accuracy.
